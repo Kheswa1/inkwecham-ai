@@ -75,9 +75,10 @@ export default function Home() {
             <div className="text-xl font-black tracking-[0.18em]">INKWECHAM</div>
             <div className="mt-1 text-xs uppercase tracking-[0.3em] text-white/45">Move Without Limits.</div>
           </div>
-          <a className="rounded-full border border-white/15 px-5 py-2 text-sm hover:bg-white/10" href="#workspace">
-            Open AI Workspace
-          </a>
+          <div className="flex items-center gap-3">
+            <a className="rounded-full border border-white/15 px-5 py-2 text-sm hover:bg-white/10" href="/auth/login">Sign in</a>
+            <a className="rounded-full border border-white/15 px-5 py-2 text-sm hover:bg-white/10" href="#workspace">Open AI Workspace</a>
+          </div>
         </nav>
 
         <div className="grid gap-12 py-20 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
@@ -111,12 +112,7 @@ export default function Home() {
                     {message.text}
                   </div>
                   {message.role === "assistant" && (
-                    <button
-                      type="button"
-                      onClick={() => (speaking ? stopSpeaking() : speak(message.text))}
-                      aria-label={speaking ? "Stop AI response audio" : "Play AI response audio"}
-                      className="mt-2 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/65 hover:bg-white/10"
-                    >
+                    <button type="button" onClick={() => (speaking ? stopSpeaking() : speak(message.text))} aria-label={speaking ? "Stop AI response audio" : "Play AI response audio"} className="mt-2 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/65 hover:bg-white/10">
                       <span aria-hidden="true">{speaking ? "■" : "🔊"}</span>
                       {speaking ? "Stop voice" : "Listen"}
                     </button>
@@ -126,12 +122,7 @@ export default function Home() {
             </div>
 
             <form onSubmit={sendMessage} className="mt-4 flex gap-2">
-              <input
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                placeholder="Ask ChamAI anything..."
-                className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm outline-none placeholder:text-white/25 focus:border-emerald-300/40"
-              />
+              <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask ChamAI anything..." className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm outline-none placeholder:text-white/25 focus:border-emerald-300/40" />
               <button className="rounded-full bg-white px-5 py-3 text-sm font-bold text-black hover:bg-white/90" type="submit">Send</button>
             </form>
           </div>
