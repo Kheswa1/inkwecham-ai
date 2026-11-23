@@ -1,0 +1,59 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "en-US"
+tone_instructions: "Be precise, evidence-based and actionable. Prioritize correctness, security, preservation, data integrity and execution safeguards over style."
+reviews:
+  profile: "assertive"
+  request_changes_workflow: true
+  high_level_summary: true
+  high_level_summary_instructions: "Summarize changed behavior, architecture impact, security/data impact, tests actually observed and remaining uncertainty. Separate source presence from verified operation."
+  review_status: true
+  review_info: true
+  review_progress: true
+  collapse_walkthrough: false
+  changed_files_summary: true
+  sequence_diagrams: true
+  estimate_code_review_effort: true
+  poem: false
+  auto_approvals:
+    enabled: false
+  auto_review:
+    enabled: true
+    drafts: false
+    auto_incremental_review: true
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!**/coverage/**"
+    - "!**/*.min.js"
+    - "!**/*.min.css"
+  path_instructions:
+    - path: "**/*"
+      instructions: |
+        Apply root AGENTS.md. Preserve historical INKWENATIVE/InkweCham work while aligning
+        new changes with one unified INKWE AI intelligence ecosystem. Review actual code and
+        diffs, not aspirations. Prioritize reproducible defects, authorization, secrets,
+        tenant isolation, data loss, integration correctness, idempotency and failure handling.
+        Avoid speculative or style-only findings. Never weaken guardrails.
+    - path: "**/*migration*"
+      instructions: |
+        Treat schema changes as durable and high risk. Review migration order, constraints,
+        grants, RLS, indexes, data backfills, production compatibility and recovery. Never
+        infer that a migration was applied merely because it exists in Git.
+    - path: "**/*webhook*"
+      instructions: |
+        Verify signatures, replay protection, input validation, idempotency, tenant scope,
+        safe retries and authoritative source-of-truth checks before side effects.
+    - path: "**/*video*"
+      instructions: |
+        Verify provider API contracts, server-side credentials, licensing/terms, cost controls,
+        async job state, retries, cancellation, output provenance and storage verification.
+        Do not report successful generation until a valid output is persisted and retrievable.
+    - path: "**/*trading*"
+      instructions: |
+        Apply only where actual trading implementation exists. Signals never authorize orders.
+        Independent strategy validation, broker gateway and both Risk Guardian Alpha and
+        Risk Guardian Omega approvals are mandatory for every live order. Keep paper/backtest/
+        live results separate. Never imply guaranteed returns.
+chat:
+  auto_reply: true
